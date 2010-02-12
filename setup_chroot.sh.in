@@ -79,7 +79,7 @@ fi
 #
 #	we also need to add some form of ld.so, here are some good guesses.
 #
-LDSO_LIST="/lib/ld.so /libexec/ld-elf.so /libexec/ld-elf.so.1 /usr/libexec/ld.so /lib/ld-linux.so.2 /usr/libexec/ld-elf.so.1"
+LDSO_LIST="/lib/ld.so /libexec/ld-elf.so /libexec/ld-elf.so.1 /usr/libexec/ld.so /lib64/ld-linux-x86-64.so.2 /lib/ld-linux.so.2 /usr/libexec/ld-elf.so.1"
 for lib in $LDSO_LIST; do
 	if [ -f $lib ]; then
 		LDSOFOUND=1;
@@ -199,6 +199,10 @@ if [ "x$LIB_LIST" != "x" ]; then
 	done
 fi
 
+# /dev/null is needed inside the chroot
+mkdir -p $targetdir/dev
+mknod -m 666 $targetdir/dev/null c 1 3
+
 if [ "x$USE_PW" = x0 ] ; then
     @PROG_USERADD@ -d "$targetdir" -s "@prefix@/sbin/@CHROOTED_NAME@" $targetuser
     if [ $? -ne 0 ]; then
@@ -252,6 +256,8 @@ else
 	#	ok we dont have pwd_mkdb, lets improvise:
 	#
 		@PROG_GREP@ $targetuser /etc/passwd > $targetdir/etc/passwd
+		# Debian: copy /etc/group into the jail, for /usr/bin/groups to work
+		cp /etc/group $targetdir/etc/group
 
 	else
 	#

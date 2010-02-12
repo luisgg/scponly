@@ -4,15 +4,16 @@
 #
 # check that the configure options are correct for chrooted operation:
 
-if [ xscponlyc = x ] || [ ! -f ./config.h ]; then
-	echo 
-	echo 'your scponly build is not configured for chrooted operation.'
-	echo 'please reconfigure as follows, then rebuild and reinstall:'
-	echo
-	echo './configure --enable-chrooted-binary (... other options)'
-	echo
-	exit 1
-fi
+# Removed for the debian package
+# if [ xscponlyc = x ] || [ ! -f ./config.h ]; then
+# 	echo 
+# 	echo 'your scponly build is not configured for chrooted operation.'
+# 	echo 'please reconfigure as follows, then rebuild and reinstall:'
+# 	echo
+# 	echo './configure --enable-chrooted-binary (... other options)'
+# 	echo
+# 	exit 1
+# fi
 
 # the following is a list of binaries that will be staged in the target dir
 BINARIES=`/usr/bin/grep '#define PROG_' config.h | /usr/bin/cut -f2 -d\" | /usr/bin/grep -v ^cd$`

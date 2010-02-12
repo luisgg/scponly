@@ -307,8 +307,8 @@ int main (int argc, char **argv)
 		char chdir_path[FILENAME_MAX];
 		
 
-		strcpy(chrootdir, homedir);
 		strcpy(chdir_path, "/");
+		strcpy(chrootdir, homedir);
 		while((root_dir = strchr(root_dir, '/')) != NULL) 
 		{
 			if (strncmp(root_dir, "//", 2) == 0) 

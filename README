@@ -30,7 +30,7 @@ Some Features:
 - logging:  scponly logs time, client IP address, username, and the 
 actual request to syslog.
 
-- choot: scponly can chroot to the user's home directory (or any 
+- chroot: scponly can chroot to the user's home directory (or any 
 other directory the user has permissions for), disallowing access 
 to the rest of the filesystem.  
 

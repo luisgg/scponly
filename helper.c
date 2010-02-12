@@ -230,7 +230,7 @@ int check_dangerous_args(char **av)
 						return 1;
 					}
 				}
-#elif
+#else
 				/*
 				 * make sure that processing doesn't continue if we can't validate a rsync check
 				 * and if the getopt flag is set.
