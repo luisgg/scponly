@@ -1,3 +1,9 @@
+scponly (4.8-4.1+aurex1) precise; urgency=low
+
+  * Rebuild for aurex 12.04
+
+ -- Luis Antonio Garcia Gisbert <luisgg@gmail.com>  Wed, 10 Oct 2012 01:41:23 +0200
+
 scponly (4.8-4.1) unstable; urgency=low
 
   * Non-maintainer upload.
